@@ -23,6 +23,20 @@ height:30px;
   </style>
 <head>
 <body style="margin-top: 11%;">
+<% if  session[:masterflag]!="true" then%>
+                     
+					  <div class="heading_featured"  style ="padding-top:5%">
+                               <fieldset style="height: 100px; background-color: #FF0040;color: #FFFFFF;padding-top:10px"> 
+                                       <div align="center">
+                                               <font size="5"><p class="flash-msg">  "You are not authorized to access this page"<br>To access this page please login first <br><h1 style="color:#FBFBEF;">  <%=link_to "        Login  ", :controller => session[:master_user_name], :action => "admin", :name => "s", :id => @profile%></h1>
+					  </p></font>
+                                       </div>
+                               </fieldset>
+                       </div>
+               <% end %>
+	<%  if session[:masterflag]=="true"  then %>
+                       
+               
 
 <% unless flash[:notice].nil? %>
                        <div class="heading_featured" >
@@ -326,6 +340,6 @@ height:30px;
 
 		<!-- end  Modal slider_1 -->
 	
-
+<%end%>
 </body>
 </html>

@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
    def welcome_email(id,name,password,email)
 	@id=id
 	@name=name
-	@link="http://test5realestate.herokuapp.com/real/user_validate?method=post&name=0&uid="+id.to_s
+	@link="http://metawing-realestate.herokuapp.com/real/user_validate?method=post&name=0&uid="+id.to_s
 	
 	@password=password
    
@@ -46,7 +46,7 @@ class UserMailer < ActionMailer::Base
 	@name=name
 	
 	#@link="http://localhost:3000/real/master_user_validate?method=post&name=0&uid="+id.to_s
-	@link="http://test5realestate.herokuapp.com/real/master_user_validate?method=post&name=0&uid="+id.to_s+"&shopname="+name.to_s
+	@link="http://metawing-realestate.herokuapp.com/real/master_user_validate?method=post&name=0&uid="+id.to_s+"&shopname="+name.to_s
 
 	
 	@password=password
