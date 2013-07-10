@@ -1,0 +1,331 @@
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<style media="all" type="text/css">
+p a {
+color: black;
+}
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+display: inline-block;
+height: 20px;
+padding: 4px 6px;
+margin-bottom: 10px;
+font-size: 14px;
+line-height: 20px;
+color: #555555;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+vertical-align: middle;
+width: 120px;
+height:30px;
+}
+  </style>
+<head>
+<body style="margin-top: 11%;">
+
+<% unless flash[:notice].nil? %>
+                       <div class="heading_featured" >
+                               <fieldset style="height: 35px; background-color: #FF0040;color: #FFFFFF;padding-top:10px">
+                                       <div align="center">
+                                               <font size="5"><p class="flash-msg"> <%= flash[:notice] %> </p></font>
+                                       </div>
+                               </fieldset>
+                       </div>
+               <% end %>
+	<div class="row" style="padding-right:20px;padding-left:10px;padding-top:10px;"> 
+	
+		
+		
+		<div style="float:left; width:20%; padding-left:2%;" >
+			
+			
+					
+			
+			
+			
+			<div class="wellside"style="background-color:#FBFBEF;padding-left:20px;padding-right:20px;padding-top:20px;padding-bottom:20px">
+				<h4 class="side_heading">Filter</h4>
+				<hr style="margin:0px;">
+		
+				<div style="padding-top:10px;">
+		
+					
+				<%= form_tag({ controller:session[:master_user_name], :action => 'crm_leads_view'}, :method=>"post") do %>
+						
+						
+						 <p  id="link" ><%= link_to_function("By Source",
+                                       "$('#link').hide(); $('#source').show()", :value => "abc")%></p></td>
+						
+						<div class="controls">
+						<div id="source" style ="display:none;">
+						<label class="checkbox" >
+														 <p  id="link" ><%= link_to_function("By Source",
+                                       "$('#link').show(); $('#source').hide()", :value => "abc")%></p></td>
+									
+							</label><hr>
+							<label class="checkbox" >
+								<%= check_box_tag  "source_intrested","interested" %>
+									Intrested
+							</label>
+							<label class="checkbox" >
+								<%= check_box_tag  "source_offline","offline" %>
+									OffLine
+							</label>
+							<label class="checkbox" >
+								<%= check_box_tag  "source_requirment","requirement" %>
+									Requirment
+							</label>
+							
+							
+							</label>
+							</div>
+							<hr>
+								<p  id="alink" ><%= link_to_function("By Property Type","$('#alink').hide(); $('#type').show()", :value => "abc")%></p></td>
+							<div id="type" style ="display:none;">
+							<label class="checkbox" >
+								<p  id="alink" ><%= link_to_function("By Property Type", "$('#alink').show(); $('#type').hide()", :value => "abc")%></p></td>
+									
+							</label>
+							<hr>
+							<label class="checkbox">
+								<%= radio_button_tag 'gender', 'residential'%>	
+				   
+									Residential
+							</label>
+							<label class="checkbox">
+								<%= radio_button_tag 'gender', 'industrial'%>	
+				   
+									Industrial
+							</label>
+							
+							<label class="checkbox">
+								<%= radio_button_tag 'gender', 'land'%>	
+				   
+									Land
+							</label>
+							<label class="checkbox">
+								<%= radio_button_tag 'gender', 'commercial'%>	
+									Commercial
+							</label>
+							</div>
+							<hr>
+							<p  id="blink" ><%= link_to_function("By Budget","$('#blink').hide(); $('#budget').show()", :value => "abc")%></p></td>
+							<div id="budget" style ="display:none;">
+							<label class="checkbox">
+							<p  id="blink" ><%= link_to_function("By Budget","$('#blink').show(); $('#budget').hide()", :value => "abc")%></p></td>	
+							</label>
+							<hr>
+							
+							<label  >Bugdet
+									<%= text_field_tag(:budget_from,"from") %><br>to<br><%= text_field_tag(:budget_to ,"to") %><br/>
+							</label><br>
+							</div>
+							<hr>
+							<p  id="clink" ><%= link_to_function("By City","$('#clink').hide(); $('#city').show()", :value => "abc")%></p></td>
+							<div id="city" style ="display:none;">							
+							<label class="checkbox">
+							<p  id="clink" ><%= link_to_function("By City","$('#clink').show(); $('#city').hide()", :value => "abc")%></p></td>
+									
+							</label><hr>
+							<label  >City
+									<%= text_field_tag(:city,"city") %><br>
+							</label>
+							</div>
+							<hr>
+							<p  id="dlink" ><%= link_to_function("By Leads Status","$('#dlink').hide(); $('#leads_status').show()", :value => "abc")%></p></td>
+							<div id="leads_status" style ="display:none;">	
+							<label class="checkbox">
+								
+							<p  id="dlink" ><%= link_to_function("By Leads Status","$('#dlink').show(); $('#leads_status').hide()", :value => "abc")%></p></td>
+							</label> 
+							<hr>
+							<label class="checkbox">
+								<%= check_box_tag  'status_initial','initial' %>
+									Initial
+							</label>
+							<label class="checkbox">
+								<%= check_box_tag  'status_inprogress','inprogress' %>
+									In Progress
+							</label>
+							<label class="checkbox">
+								<%= check_box_tag  'status_prospected','prospected' %>
+									Prospected
+							</label>
+							<label class="checkbox">
+								<%= check_box_tag  'status_client','client' %>
+									Client
+							</label>
+							<label class="checkbox">
+								<%= check_box_tag  'status_closed','closed' %>
+									Closed
+							</label>
+							</div>
+							<hr>
+							<p  id="elink" ><%= link_to_function("By User Id","$('#elink').hide(); $('#user_id').show()", :value => "abc")%></p></td>
+							<div id="user_id" style ="display:none;">								
+							<label class="checkbox">
+							<p  id="elink" ><%= link_to_function("By User Id","$('#elink').show(); $('#user_id').hide()", :value => "abc")%></p></td>
+									
+							</label><hr>
+							<label  > User Id
+									<%= text_field_tag(:user_id,"user id") %><br>
+							</label>
+							</div>
+							<hr>
+								<p  id="flink" ><%= link_to_function("By Property Id","$('#flink').hide(); $('#property_id').show()", :value => "abc")%></p></td>
+							<div id="property_id" style ="display:none;">		
+							<label class="checkbox">
+								<p  id="flink" ><%= link_to_function("By Property Id","$('#flink').hide(); $('#property_id').show()", :value => "abc")%></p></td>
+									
+							</label><hr>
+							<label  >  Property Id
+									<%= text_field_tag(:property_id,"property id") %><br>
+							</label>
+							</div>
+							<hr>
+						</div>
+			 		<div  >
+				
+						
+								<center><%= submit_tag("submit",  :value => "goo",:class=>"btn btn-primary") %></center>
+						
+								</div>
+						
+			
+					<%end%>
+			
+				</div>
+			</div>
+			<br>
+			<div class="wellside"style="background-color:#FBFBEF;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:10px"><h4 class="side_heading">Refine Search</h4>
+				<hr style="margin:0px;">
+				<div style="padding-top:10px;">
+					<form class="form-search">
+						<input type="text" class="input-medium search-query">
+						<button type="submit" class="btn btn-warning">Search</button>
+						
+					</form>
+				</div>
+				
+				<%if session[:adminflag]=="tru" then %>
+				<div style="padding-top:10px;">
+					<%= form_tag("/real/admin_property_view/", :method=>"post") do %>
+						<%= submit_tag("viewall",  :value => "viewall",:class=>"btn btn-primary") %>	
+					<% end %>
+					<%= form_tag("/real/property_add/", :method=>"post") do %>
+						<%= submit_tag("addproperties",  :value => "addproperty",:class=>"btn btn-primary") %>	
+					<% end %>
+			
+					
+				</div>
+				<%end%>
+			</div>
+		</div>
+
+		<div>
+	   
+			<div id="container"style="float:right; width:75%;background-color:white">
+				<div class="wellside" style ="padding-left:3%;padding-top:1% ">
+					<div class="alert" style ="background-color:#A8A8A8">
+						<div class="page-schres">
+							<h4 style="color:white" >
+							
+   
+								<large style="color:00FFCC"> </large> Search Results for <%=@pt%>
+
+							</h4>
+						</div>
+					</div>
+				</div>	
+			
+				<br>
+				
+				<table class="table table-bordered" style="width:500px; background-color:#A9A9F5; color: #000000; border: 2px solid black;"> 
+				<tr class="success">
+					<td>Leads</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr class="warning">
+					
+					<td>User Id</td>
+					<td>User Name</td>
+					<td>User Phone</td>
+					<td>Property/Request Id</td>
+					<td> Source </td>
+					<td>Leads Level</td>
+					<td>Date </td>
+					<td>Remark</td>
+					<td></td>
+					<td></td>
+					
+				</tr>
+				
+	
+				<%@t.each do |i|%>
+				<%= form_tag({ controller:session[:master_user_name], :action => 'crm_leads_save'}, :method=>"post") do %>
+				<tr >
+				<%hidden_field_tag 'l_id', i["l_id"]%>
+				
+					<td><%=link_to i["user_id"]  %></td>
+					<td><%=i["name"]%></td>
+					<td><%=i["phone"]%></td>
+					<%if i["req_no"].to_s == '0' then %>
+					<td><%=i["property_id"]%></td>
+					<td><%="Intrested"%></td>
+					<% end %>
+					<%if i["property_id"].to_s == '0'  then %>
+					<td><%=i["req_no"]%></td>
+					<td><%="Request"%></td>
+					<%end%>
+					<td ><%=select(:status, :type, [[i["leads_type"], 1],["initial", 2], ["In progress", 3], ["Prospected", 4], ["Client", 5],["Closed", 6]], {}, :class => "myclass") %><br>	
+					</td>
+					<td><%=i["created_at"]%></td>
+					
+					<td><span style="width:10px"><%= text_field_tag(:remark,i['remark']) %></td>
+				
+				<td><span style="font-size:15px; padding:4px; float:right;" class="btn btn-danger"><%=link_to "Delete", :controller => session[:master_user_name], :action => "crm_leads_delete", :id => @profile,:name => "Residential", :method => :post,:l_id=>i["l_id"],:req_no=>i["req_no"]%></span></td>
+				<td><%= submit_tag("save",  :value =>'save', :class=>"btn btn-primary" ,) %></span></td>
+				</tr>
+				
+				<%end%>
+				<%end%>
+			</table>
+	
+			</div>
+		</div>
+	   
+	</div>
+	 <div id="time_div">
+	
+	 </div>
+<!-- Modal slider_1 -->
+<div id="slider_1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Company Logo</h3>
+  </div>
+  <div class="modal-body">
+ 
+	
+ 		
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-inverse">Save changes</button>
+  </div>
+</div>
+
+		<!-- end  Modal slider_1 -->
+	
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<html>
+<head></head>
+<body style="margin-top: 11%;margin-left: 20px">
+
+
+<div class="row" style="height:900px; width:700px;padding-bottom:20px">
+   <div class="span5" style="float:left;height:900px; width:700px;">
+			
+		<%= form_tag("/real/property_edit/", :method=>"post") do %>
+		
+			<%@t.each do |i|%>
+		 <fieldset style="height: 900px;width:500px; background-color: #F7F2E0; color: #000000; border: 2px solid black;padding-left:20px">
+		<br>
+		<br>
+		<br>
+		<br>
+		<tab id=t1><h1>Edit Properties </h1>
+		<hr>
+		
+				
+		<br>
+		<br>
+		 <label class="control-label">
+		Property Id
+		
+		</label>
+		<%= text_field_tag(:propertyid,i["property_id"], readonly: true ) %><br/>
+		
+		<label class="control-label">
+		property Name
+		
+		</label>
+		<%= text_field_tag(:propertyname,i["property_name"]) %><br/>
+		
+		<label class="control-label">
+		Price
+		
+		</label>
+		<%= text_field_tag(:price,i["price"]) %><br/>
+		
+		<label class="control-label">
+		State
+		
+		</label>
+		<%= text_field_tag(:state,i["sate"]) %><br/>
+		
+		<label class="control-label">
+		property Type
+		
+		</label>
+		<%= text_field_tag(:propertytype,i["property_type"]) %><br/>
+		
+		<label class="control-label">
+		Sub Property Type
+		
+		</label>
+		<%= text_field_tag(:subpropertytype,i["sub_property_type"]) %><br/>
+		
+		<label class="control-label">
+		Purpose
+		
+		</label>
+		<%= text_field_tag(:purpose,i["purpose"]) %><br/>
+		
+		<label class="control-label">
+		Bedroom
+		
+		</label>
+		<%= text_field_tag(:bedroom,i["bedroom"]) %><br/>
+		
+		<label class="control-label" for="textarea">
+		Description
+		<span class="required">*</span>
+		</label>
+		<div class="controls">
+		<TEXTAREA NAME="contant" COLS=40 ROWS=5 ><%=i["contant"]%></TEXTAREA><br/>
+		
+		
+		<br>
+		
+		<%end%>
+		<%= submit_tag("Save",  :value => "Save",:class=>"btn btn-primary") %>		
+		
+		<br>
+		<br>
+		
+		
+		
+		</fieldset>
+		<% end %>
+		
+	</div>
+</div>
+
+	
+</body>
+</html>

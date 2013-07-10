@@ -1,0 +1,8 @@
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+global data <%=debug($global)%>
+instance data<%=debug(@global)%>
+	<%= form_tag({ :controller=>'real' ,:action => 'abc'}, :method=>"post") do %>
+	
+	<%= text_field_tag(:check,"Property_ID") %><br/>
+		<%= submit_tag("submit",:value =>"Submit", :class=>"btn btn-success") %><br>
+		<%end%>

@@ -1,0 +1,59 @@
+<html>
+<head></head>
+<body style="margin-top: 11%;margin-left: 20px">
+
+
+  
+		<div style="height:900px;width:970px;background-color:">  
+			<div id="container" style="height:900px;width:950px;padding-left:20px;background-color:#FBFBEF; float: right;">
+				<div class="wellside">
+					<div class="alert">
+						<div class="page-schres">
+							<h4>
+								<small>Search Results  </small> 
+								
+							
+
+							</h4>
+						</div>
+					</div>
+				</div>	
+				
+				<%= form_tag("/real/storyparticular/", :method=>"post") do %>
+				
+				<ul class="thumbnails">
+				
+		
+				<%@t.each do |i|%>
+					<li class="span2">
+					<div id="image1" class="thumbnail"  style="background-color:#FFFFFF;>
+      
+	  
+						<%= link_to image_tag(i["image"], :width => 225, :height => 175), :controller => "real",:action => 'conta', :id => @profile, :s_id=>i["story_id"], :u_id=>i["sub_user_id"] %>
+							<div class="caption">
+								
+								
+								
+								
+								
+								<font size="7"><h4><%= link_to i["name"], {:controller => "real", :action => "storyparticular", :name => i["name"], :method => :post, :s_id=>i["story_id"], :u_id=>i["sub_user_id"]}%></h4></font>
+	
+								
+
+								<br>
+								
+							</div>
+							
+							
+					</div>
+					</li>
+				<%end%>
+					
+				<%end%>
+				</ul>
+				
+				
+			</div>
+		</div>
+</body>
+</html>
