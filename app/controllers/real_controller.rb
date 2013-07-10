@@ -127,7 +127,7 @@ class RealController < ApplicationController
                                Properties.find_by_sql(["INSERT INTO contactmail_"+session[:master_user_id].to_s+"(r_name,r_email,r_phone,r_property_type,r_sub_property_type,r_purpose,r_bed_room,r_price_limit,r_location,r_user_id) VALUES (?,?,?,?,?,?,?,?,?,?)" ,params[:name],params[:email],params[:phone],params[:propertytype],params[:subpropertytype],params[:purpose],params[:bedroom],params[:price],params[:location],$user_id])
                                connection = ActiveRecord::Base.connection();
 							   t=connection.execute("select max(r_req_no) from contactmail_"+session[:master_user_id].to_s);
-							   Properties.find_by_sql(["INSERT INTO leads_"+session[:master_user_id].to_s+"(user_id,req_no,created_at ) VALUES (?,?,?)" ,session[:userid],t['r_req_no']["max(r_req_no)"],Time.now.strftime("%m/%d/%Y")])
+							   Properties.find_by_sql(["INSERT INTO leads_"+session[:master_user_id].to_s+"(user_id,req_no,created_at ) VALUES (?,?,?)" ,session[:userid],t[0]['r_req_no']["max(r_req_no)"],Time.now.strftime("%m/%d/%Y")])
                                
                               UserMailer.req(session[:c_email],params[:name],params[:email],params[:phone],params[:propertytype],params[:subpropertytype],params[:purpose],params[:bedroom],params[:price],params[:location]).deliver
                                flash[:notice] = "#{'We accept your request,we will contact you '}"
