@@ -70,9 +70,10 @@
 			
 			
   
-		
-				<p><%= text_field_tag(:shopname,"Shop Name") %></p>
-				<p><%= text_field_tag(:password,"Password") %></p>
+					
+					<p>	<%=text_field_tag 'shopname', nil, :placeholder => 'Shop Name'%></p>
+					
+					<p><%=password_field_tag 'password', nil, :placeholder => 'Password'%></p>
 				<label for="remember">
 				  <input type="checkbox" id="remember" value="remember" />
 				  <span>Remember me on this computer</span>
