@@ -288,7 +288,7 @@ height:30px;
 				<%= form_tag({ controller:session[:master_user_name], :action => 'crm_leads_save'}, :method=>"post") do %>
 				<tr >
 				<%hidden_field_tag 'l_id', i["l_id"]%>
-				
+				<td><%=link_to i["l_id"]  %></td>
 					<td><%=link_to i["user_id"]  %></td>
 					<td><%=i["name"]%></td>
 					<td><%=i["phone"]%></td>
@@ -308,7 +308,7 @@ height:30px;
 				
 				<td><span style="font-size:15px; padding:4px; float:right;" class="btn btn-danger"><%=link_to "Delete", :controller => session[:master_user_name], :action => "crm_leads_delete", :id => @profile,:name => "Residential", :method => :post,:req_no=>i["req_no"]%></span></td>
 				<td><%= submit_tag("save",  :value =>'save', :class=>"btn btn-primary" ,) %></span></td>
-				</tr>
+				
 				
 				<%end%>
 				<%end%>
