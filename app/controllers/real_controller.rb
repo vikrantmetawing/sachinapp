@@ -77,6 +77,8 @@ class RealController < ApplicationController
 	
 	end	
 	
+	
+	
 
 	def crm_leads_delete
 			connection = ActiveRecord::Base.connection();
@@ -577,15 +579,15 @@ class RealController < ApplicationController
 			#@results = connection.execute("ALTER contactpeople mytable ALTER COLUMN phone string")
 			s="CREATE TABLE "+ "contactpeople_"+session[:master_user_id].to_s+"(name varchar(100),email varchar(255),phone varchar(255),message varchar(255))"
 			connection.execute(s)
-			s="CREATE TABLE "+ "properties_"+session[:master_user_id].to_s+"(property_id  INTEGER  PRIMARY KEY AUTOINCREMENT,property_name varchar(255),price varchar(255),state varchar(255),property_type varchar(255),purpose varchar(255),bedroom int,image varchar(255),sub_property_type varchar(255),contant varchar(255),created_at date,updated_at date)"
+			s="CREATE TABLE "+ "properties_"+session[:master_user_id].to_s+"(property_id SERIAL NOT NULL PRIMARY KEY,property_name varchar(255),price varchar(255),state varchar(255),property_type varchar(255),purpose varchar(255),bedroom int,image varchar(255),sub_property_type varchar(255),contant varchar(255),created_at date,updated_at date)"
 			connection.execute(s)
-			s="CREATE TABLE "+ "storiesses_"+session[:master_user_id].to_s+"(story_id  INTEGER  PRIMARY KEY AUTOINCREMENT,sub_user_id int,name varchar(100),email varchar(255),phone varchar(255),story varchar(255),image varchar(2))"
+			s="CREATE TABLE "+ "storiesses_"+session[:master_user_id].to_s+"(story_id  SERIAL NOT NULL PRIMARY KEY,sub_user_id int,name varchar(100),email varchar(255),phone varchar(255),story varchar(255),image varchar(2))"
 			connection.execute(s)
-			s="CREATE TABLE "+ "users_"+session[:master_user_id].to_s+"( sub_user_id  INTEGER  PRIMARY KEY AUTOINCREMENT ,phone varchar(20),name varchar(100),password varchar(255),my_properties varchar(255),email varchar(255),validates boolean )"
+			s="CREATE TABLE "+ "users_"+session[:master_user_id].to_s+"( sub_user_id  SERIAL NOT NULL PRIMARY KEY ,phone varchar(20),name varchar(100),password varchar(255),my_properties varchar(255),email varchar(255),validates boolean )"
 			connection.execute(s)
-			s="CREATE TABLE "+ "contactmail_"+session[:master_user_id].to_s+"(r_req_no  INTEGER  PRIMARY KEY AUTOINCREMENT,r_name varchar(100),r_email varchar(255),r_phone varchar(255),r_property_type varchar(255),r_sub_property_type varchar(255),r_purpose varchar(255),r_bed_room varchar(255),r_price_limit varchar(255),r_location varchar(255),r_user_id integer)"
+			s="CREATE TABLE "+ "contactmail_"+session[:master_user_id].to_s+"(r_req_no  SERIAL NOT NULL PRIMARY KEY,r_name varchar(100),r_email varchar(255),r_phone varchar(255),r_property_type varchar(255),r_sub_property_type varchar(255),r_purpose varchar(255),r_bed_room varchar(255),r_price_limit varchar(255),r_location varchar(255),r_user_id integer)"
 			connection.execute(s)
-			s="CREATE TABLE "+ "leads_"+session[:master_user_id].to_s+"(l_id INTEGER  PRIMARY KEY AUTOINCREMENT,user_id integer ,property_id integer DEFAULT '0',req_no integer DEFAULT '0',leads_type varchar(50) DEFAULT 'initial',created_at date,remark varchar(1000) DEFAULT '')"
+			s="CREATE TABLE "+ "leads_"+session[:master_user_id].to_s+"(l_id SERIAL NOT NULL PRIMARY KEY,user_id integer ,property_id integer DEFAULT '0',req_no integer DEFAULT '0',leads_type varchar(50) DEFAULT 'initial',created_at date,remark varchar(1000) DEFAULT '')"
 			connection.execute(s)
  
 			
@@ -594,7 +596,6 @@ class RealController < ApplicationController
 			 redirect_to :controller=>session[:master_user_name], :action => 'basic_view',:name=>"master_user_validate"
 			
 		end
-		
 		
 		def property
 		end
