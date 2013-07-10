@@ -82,10 +82,10 @@ class RealController < ApplicationController
 
 	def crm_leads_delete
 			connection = ActiveRecord::Base.connection();
-			@t=connection.execute("DELETE FROM leads_" +session[:master_user_id].to_s+ " WHERE l_id=" +params[:l_id])
+			@t=connection.execute("DELETE FROM leads_" +session[:master_user_id].to_s+ " WHERE l_id=" +params[:l_id].to_s)
 			
 			if params[:req_no] != '0' then  
-				@t=connection.execute("DELETE FROM contactmail_" +session[:master_user_id].to_s+ " WHERE r_req_no=" +params[:req_no])
+				@t=connection.execute("DELETE FROM contactmail_" +session[:master_user_id].to_s+ " WHERE r_req_no=" +params[:req_no].to_s)
 			end
 			redirect_to :controller=>session[:master_user_name], :action => 'crm_leads_view'
 	end
@@ -117,7 +117,7 @@ class RealController < ApplicationController
 						status= "Closed"
 						
 				end
-			connection.execute("update leads_"+session[:master_user_id].to_s+" set remark="+"\"" + params[:remark] + "\""+" ,leads_type=" +"\"" + status+"\"" + " where l_id=" +params[:l_id])
+			connection.execute("update leads_"+session[:master_user_id].to_s+" set remark="+"\"" + params[:remark] + "\""+" ,leads_type=" +"\"" + status+"\"" + " where l_id=" +params[:l_id].to_s)
 			
 			
 			redirect_to :controller=>session[:master_user_name], :action => 'crm_leads_view'

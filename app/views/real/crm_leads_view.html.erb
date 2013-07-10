@@ -306,7 +306,7 @@ height:30px;
 					
 					<td><span style="width:10px"><%= text_field_tag(:remark,i['remark']) %></td>
 				
-				<td><span style="font-size:15px; padding:4px; float:right;" class="btn btn-danger"><%=link_to "Delete", :controller => session[:master_user_name], :action => "crm_leads_delete", :id => @profile,:name => "Residential", :method => :post,:l_id=>i["l_id"],:req_no=>i["req_no"]%></span></td>
+				<td><span style="font-size:15px; padding:4px; float:right;" class="btn btn-danger"><%=link_to "Delete", :controller => session[:master_user_name], :action => "crm_leads_delete", :id => @profile,:name => "Residential", :method => :post,:req_no=>i["req_no"]%></span></td>
 				<td><%= submit_tag("save",  :value =>'save', :class=>"btn btn-primary" ,) %></span></td>
 				</tr>
 				
