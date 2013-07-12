@@ -228,7 +228,7 @@ class RealController < ApplicationController
 						
 						if params[:name] != "master_user_validate"
 						
-							if (MasterUsers.find_by_shop_name(request.subdomain).nil?) then 
+							if (MasterUsers.find_by_shop_name(params[:id]).nil?) then 
 								flash[:notice] = "#{'ERROR: There  is no shop with this name ' }"
 								session[:userflag]="false"
 								redirect_to  :action => 's'
@@ -238,9 +238,9 @@ class RealController < ApplicationController
 						
 							session[:userflag]="false"
 							
-							session[:master_user_id]=(MasterUsers.find_by_shop_name(request.subdomain)).master_user_id
-							session[:master_user_id]=(MasterUsers.find_by_shop_name(request.subdomain)).master_user_id
-							session[:master_user_name]=(MasterUsers.find_by_shop_name(request.subdomain)).shop_name
+							session[:master_user_id]=(MasterUsers.find_by_shop_name(params[:id])).master_user_id
+							session[:master_user_id]=(MasterUsers.find_by_shop_name(params[:id])).master_user_id
+							session[:master_user_name]=(MasterUsers.find_by_shop_name(params[:id])).shop_name
 							#session[:master_user_name]=(MasterUsers.find_by_shop_name("rajat")).shop_name
 							h_detail=Home.find_by_user_id(session[:master_user_id])
 							c_detail=MContact.find_by_user_id(session[:master_user_id])
