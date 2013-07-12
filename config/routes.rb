@@ -1,10 +1,15 @@
 Realstate::Application.routes.draw do
- match "/" => "real#fst"
+ #match "/" => "real#fst"
+ 
+  match "/" => "real#basic_view",:constraints => {:subdomain => /.+/}
+  #root :to =>"real#fst"
+  match "/" => "real#fst"
  get "real/home"
   get"real/contact"
   get"real/logout"
   get"real/admin_property_view"
   get"real/homesearch"
+ 
    match ":real/crm_leads_view/" => "real#crm_leads_view"
     match ":id/crm_user_details/" => "real#crm_user_details"
     match ":id/crm_leads_delete/" => "real#crm_leads_delete"
@@ -33,7 +38,8 @@ Realstate::Application.routes.draw do
    match ":name/admin/" => "real#admin"
     match ":name/adminhome/" => "real#adminhome"
   #match ":name/home/" => "real#home"
- match "/:id/" => "real#basic_view"
+  
+	#match "/:id/" => "real#basic_view"
   match "/:id/basic_view" => "real#basic_view"
   match "real/usersignup" => "real#usersignup",:via => :post
    match "real/property_add" => "real#property_add",:via => :post

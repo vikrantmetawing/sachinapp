@@ -97,7 +97,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-		<%if session[:mode]=="edit" then %>
+		<%if session[:mode]== "edit" then %>
 		<p style="float:left;margin-top:3%;margin-right:3%"><%=link_to image_tag(session[:logo], :width => 50, :height => 100)  ,'#myModal', html_options = {:data => {:toggle => 'modal'} }%></p>
 		<%else%>
 		<a style="float:left;margin-top:3%;margin-right:3%" href="#"><%= image_tag(session[:logo], :width => 50, :height => 100) %></a>
@@ -135,7 +135,8 @@
 				<li><%=link_to "Stories", :controller => session[:master_user_name], :action => "story", :id => @profile%></li>
 				<li><%=link_to "About Us", :controller => session[:master_user_name], :action => "about", :id => @profile%></li>
 				
-				<%if session[:masterflag]=="true" then %>
+				<%if session[:masterflag] == "true" then %>
+				
 					<li><%=link_to "Admin Home ", :controller => session[:master_user_name], :action => "adminhome", :id => @profile%></li>
 				<%end%>	
 				

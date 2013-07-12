@@ -1,5 +1,28 @@
 class RealController < ApplicationController
-	  def crm_leads_view 
+	attr_accessor :some_var
+	before_filter :set_toppings
+		def set_toppings
+			#session[:some_var]="vikrant"
+		end
+
+		def abc
+		session[:some_var]="sachin" 
+		end
+		def fst
+		
+		render :layout => "front"
+		end
+		def home
+			some_var
+		s="SELECT * FROM properties_" + session[:master_user_id].to_s + " ORDER BY created_at DESC"
+			connection = ActiveRecord::Base.connection();
+				@t=connection.execute(s)
+			
+			#@t=Properties.find_by_sql(s)
+			
+					
+		end
+	def crm_leads_view 
 	connection = ActiveRecord::Base.connection();
 	
 		#@t=connection.execute("select t.l_id,t.property_id,t.req_no,t.leads_type,t.leads_type,t.remark,t.created_at,t.user_id,t.property_name,t.name ,t.phone,t.property_type ,t.sub_property_type,t.r_sub_property_type from (select * from (select l.*,users_"+session[:master_user_id].to_s+".name,users_"+session[:master_user_id].to_s+".phone  from  ( SELECT leads_"+session[:master_user_id].to_s+".* ,properties_"+session[:master_user_id].to_s+".* FROM leads_"+session[:master_user_id].to_s+" LEFT OUTER JOIN properties_"+session[:master_user_id].to_s+" ON leads_"+session[:master_user_id].to_s+".property_id=properties_"+session[:master_user_id].to_s+".property_id)as l LEFT OUTER JOIN users_"+session[:master_user_id].to_s+" ON l.user_id=users_"+session[:master_user_id].to_s+".sub_user_id) as r LEFT OUTER JOIN contactmail_"+session[:master_user_id].to_s+" ON r.req_no=contactmail_"+session[:master_user_id].to_s+".r_req_no)as t ;")
@@ -170,9 +193,7 @@ class RealController < ApplicationController
 			
 	end
 	
-	def fst
-		render :layout => "front"
-	end
+	
 	def s
 	connection = ActiveRecord::Base.connection();
 
@@ -207,7 +228,7 @@ class RealController < ApplicationController
 						
 						if params[:name] != "master_user_validate"
 						
-							if (MasterUsers.find_by_shop_name(params[:id]).nil?) then 
+							if (MasterUsers.find_by_shop_name(request.subdomain).nil?) then 
 								flash[:notice] = "#{'ERROR: There  is no shop with this name ' }"
 								session[:userflag]="false"
 								redirect_to  :action => 's'
@@ -216,10 +237,10 @@ class RealController < ApplicationController
 							else 
 						
 							session[:userflag]="false"
-							session[:masterflag]="false" 
-							session[:master_user_id]=(MasterUsers.find_by_shop_name(params[:id])).master_user_id
-							session[:master_user_id]=(MasterUsers.find_by_shop_name(params[:id])).master_user_id
-							session[:master_user_name]=(MasterUsers.find_by_shop_name(params[:id])).shop_name
+							
+							session[:master_user_id]=(MasterUsers.find_by_shop_name(request.subdomain)).master_user_id
+							session[:master_user_id]=(MasterUsers.find_by_shop_name(request.subdomain)).master_user_id
+							session[:master_user_name]=(MasterUsers.find_by_shop_name(request.subdomain)).shop_name
 							#session[:master_user_name]=(MasterUsers.find_by_shop_name("rajat")).shop_name
 							h_detail=Home.find_by_user_id(session[:master_user_id])
 							c_detail=MContact.find_by_user_id(session[:master_user_id])
@@ -903,16 +924,7 @@ class RealController < ApplicationController
 			end
 		end
 	
-		def home
-			
-		s="SELECT * FROM properties_" + session[:master_user_id].to_s + " ORDER BY created_at DESC"
-			connection = ActiveRecord::Base.connection();
-				@t=connection.execute(s)
-			
-			#@t=Properties.find_by_sql(s)
-			
-					
-		end
+		
 		
 		def homesearch
 			if params[:name]=="Residential" then 
@@ -1438,11 +1450,9 @@ class RealController < ApplicationController
 			end
 		end
 		
-		def abc
-		connection = ActiveRecord::Base.connection();
-	@t=connection.execute("select max(r_req_no) from contactmail_"+session[:master_user_id].to_s);
-			
-		end
+		
+		
+
 
 		
 	end 

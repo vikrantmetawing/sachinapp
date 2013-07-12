@@ -1,2 +1,13 @@
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<%=@t[0]%>
+
+	<%= form_tag("/real/abc/", :method=>"post") do %>
+			
+			
+			
+		
+			<hr><%= text_field_tag(:state,"State") %><br/>  
+			<%= submit_tag("submit",:value =>"Submit", :class=>"btn btn-success") %><br>
+	<%end%>
+<%=session[:some_var]%>
+<%=@foo%>
+		
