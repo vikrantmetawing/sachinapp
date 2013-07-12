@@ -2,7 +2,7 @@ Realstate::Application.routes.draw do
  #match "/" => "real#fst"
  
   match "/" => "real#basic_view",:constraints => {:subdomain => /.+/}
-  root :to =>"real#fst"
+  #root :to =>"real#fst"
  # match "/" => "real#fst"
  get "real/home"
   get"real/contact"
